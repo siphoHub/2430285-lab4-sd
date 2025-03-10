@@ -18,26 +18,31 @@ document.getElementById('button').addEventListener('click', async function getCo
             console.log(data);
             const country = data[0];
             const countryInfo = `
-                <h2>${country.name.common}</h2>
-                <p>Capital: ${country.capital[0]}</p>
-                <p>Population: ${country.population}</p>
-                <img src="${country.flags[0]}" alt="Flag of ${country.name.common}" width="100">
+                <h1>
+                    ${country.name.common}
+                </h1>
+                <p>
+                    Capital: ${country.capital[0]}
+                </p>
+                <p>
+                    Population: ${country.population}
+                </p>
+                <img src="${country.flags.png}" width="300" height="200">
             `;
             document.getElementById('country-info').innerHTML = countryInfo;
 
             if (country.borders) {
                 let borders = country.borders;
-                let borderInfo = "<h3>Bordering Countries:</h3><ul>";
+                let borderInfo = "<h4>Bordering Countries:</h4><ul>";
 
-                // Loop through each border and fetch its name and flag
-                borders.forEach(borderCode => {
-                    fetch(`https://restcountries.com/v3.1/alpha/${borderCode}`)
+                borders.forEach(borderName => {
+                    fetch(`https://restcountries.com/v3.1/alpha/${borderName}`)
                         .then(response => response.json())
                         .then(borderData => {
                             const border = borderData[0];
                             borderInfo += `
                                 <li>
-                                    <img src="${border.flags[0]}" alt="Flag of ${border.name.common}" width="30">
+                                    <img src="${border.flags.png}" width="50">
                                     ${border.name.common}
                                 </li>
                             `;
