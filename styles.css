@@ -1,0 +1,13 @@
+
+  #buttonSection{
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    border: 5px solid lightseagreen;
+    background-color: lightseagreen;
+
+}
+
+#cName{
+    text-align: center;
+}
